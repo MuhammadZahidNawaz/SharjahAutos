@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sharjah Autos</title>
+  <meta name="description" content="Sharjah Autos - Quality pre-owned cars in Sharjah" />
+  <style>
+    :root{--accent:#e63946;--dark:#0f1720;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:var(--dark); background:#f8fafc}
+    header{background:#fff; border-bottom:1px solid #e6eef6;}
+    .container{max-width:1100px; margin:0 auto; padding:1rem}
+    .brand{display:flex; align-items:center; gap:.75rem; padding:.5rem 0}
+    .brand .logo{width:44px; height:44px; background:linear-gradient(135deg,var(--accent),#ff8a65); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700}
+    nav{margin-left:auto}
+    nav a{color:var(--muted); text-decoration:none; margin-left:1rem}
+    .hero{display:grid; grid-template-columns:1fr; gap:1rem; align-items:center; padding:2rem 0}
+    .hero-inner{background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 18px rgba(15,23,32,0.06)}
+    .hero h1{margin:0 0 .5rem; font-size:1.75rem}
+    .cta{display:inline-block; background:var(--accent); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none}
+    .inventory{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-top:1rem}
+    .card{background:#fff; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(2,6,23,0.04);} 
+    .card img{width:100%; height:140px; object-fit:cover; border-radius:8px}
+    .card h3{margin:.5rem 0 0; font-size:1.05rem}
+    .card p{margin:.35rem 0; color:var(--muted); font-size:.9rem}
+    footer{padding:1.25rem 0; text-align:center; color:var(--muted); font-size:.9rem}
+    @media(min-width:768px){ .hero{grid-template-columns:1fr 420px} .hero h1{font-size:2rem} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center;">
+      <div class="brand">
+        <div class="logo">SA</div>
+        <div>
+          <div style="font-weight:700">Sharjah Autos</div>
+          <div style="font-size:.85rem;color:var(--muted)">Quality pre-owned cars — Sharjah</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#inventory">Inventory</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Find your next car in Sharjah</h1>
+        <p style="color:var(--muted);">Browse a curated selection of inspected, reliable, pre-owned vehicles. Transparent history reports and flexible financing available.</p>
+        <p style="margin-top:1rem">
+          <a class="cta" href="#inventory">Browse Inventory</a>
+        </p>
+
+        <div style="margin-top:1.5rem">
+          <h4 style="margin:0 0 .5rem">Quick search</h4>
+          <form id="searchForm" onsubmit="return false;" style="display:flex;gap:.5rem;">
+            <input id="q" placeholder="Search by make, model, year" style="flex:1;padding:.6rem;border:1px solid #e6eef6;border-radius:8px" />
+            <button onclick="filterCars()" class="cta" style="padding:.55rem .8rem">Search</button>
+          </form>
+        </div>
+      </div>
+
+      <aside style="padding-left:0.75rem">
+        <div style="background:#fff;padding:1rem;border-radius:12px;box-shadow:0 4px 18px rgba(2,6,23,0.04)">
+          <h3 style="margin-top:0">Featured Vehicle</h3>
+          <img src="https://via.placeholder.com/400x220?text=Featured+Car" alt="Featured car" style="width:100%;border-radius:8px;object-fit:cover" />
+          <p style="margin:.5rem 0 0;font-weight:600">Toyota Camry 2019</p>
+          <p style="color:var(--muted);margin:.25rem 0">AED 38,000 — 60,000 km</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="inventory">
+      <h2 style="margin-top:1.5rem">Inventory</h2>
+      <div class="inventory" id="inventoryGrid">
+        <!-- Cards rendered by JavaScript -->
+      </div>
+      <p id="noResults" style="display:none;color:var(--muted);margin-top:.75rem">No vehicles found.</p>
+    </section>
+
+    <section id="about" style="margin-top:1.5rem">
+      <h2>About Sharjah Autos</h2>
+      <p style="color:var(--muted);max-width:70ch">Sharjah Autos is a local dealership focused on providing inspected, reliable pre-owned cars to buyers across the UAE. We provide vehicle history reports, inspection checklists and help with financing and paperwork.</p>
+    </section>
+
+    <section id="contact" style="margin-top:1.5rem">
+      <h2>Contact</h2>
+      <p style="color:var(--muted)">Visit us at: Al Majaz, Sharjah • Call: +971 50 000 0000 • Email: sales@sharjahautos.example</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © Sharjah Autos — Built with care. Follow us on social media.
+    </div>
+  </footer>
+
+  <script>
+    const cars = [
+      {id:1, title:'Toyota Camry 2019', price:'AED 38,000', km:'60,000 km', img:'https://via.placeholder.com/400x220?text=Camry+2019'},
+      {id:2, title:'Nissan Patrol 2016', price:'AED 78,500', km:'120,000 km', img:'https://via.placeholder.com/400x220?text=Patrol+2016'},
+      {id:3, title:'Honda Civic 2018', price:'AED 42,000', km:'48,000 km', img:'https://via.placeholder.com/400x220?text=Civic+2018'},
+      {id:4, title:'BMW 5 Series 2015', price:'AED 95,000', km:'140,000 km', img:'https://via.placeholder.com/400x220?text=BMW+5+Series+2015'}
+    ];
+
+    function render(list){
+      const grid = document.getElementById('inventoryGrid');
+      grid.innerHTML = '';
+      list.forEach(c=>{
+        const el = document.createElement('div'); el.className='card';
+        el.innerHTML = `
+          <img src="${c.img}" alt="${c.title}"/>
+          <h3>${c.title}</h3>
+          <p>${c.price} — ${c.km}</p>
+          <p style=\"margin-top:.5rem\"><a href=\"#contact\" class=\"cta\" style=\"padding:.4rem .6rem;display:inline-block\">Enquire</a></p>
+        `;
+        grid.appendChild(el);
+      })
+    }
+
+    function filterCars(){
+      const q = document.getElementById('q').value.trim().toLowerCase();
+      const results = cars.filter(c => c.title.toLowerCase().includes(q) || c.price.toLowerCase().includes(q));
+      document.getElementById('noResults').style.display = results.length? 'none':'block';
+      render(results.length? results: cars);
+    }
+
+    // initial render
+    render(cars);
+  </script>
+</body>
+</html>
