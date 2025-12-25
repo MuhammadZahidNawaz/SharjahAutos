@@ -603,7 +603,7 @@
                 <div class="overflow-hidden h-80 relative">
                     <div id="customer-track" class="flex transition-transform duration-500 ease-in-out h-full">
                         <!-- Customer 1 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer1.png" alt="Happy Customer"
@@ -612,7 +612,7 @@
                         </div>
 
                         <!-- Customer 2 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer2.jpg" alt="Happy Customer"
@@ -621,7 +621,7 @@
                         </div>
 
                         <!-- Customer 3 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer3.png" alt="Happy Customer"
@@ -630,7 +630,7 @@
                         </div>
 
                         <!-- Customer 4 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer4.png" alt="Happy Customer"
@@ -639,7 +639,7 @@
                         </div>
 
                         <!-- Customer 5 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer5.png" alt="Happy Customer"
@@ -648,7 +648,7 @@
                         </div>
 
                         <!-- Customer 6 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer6.jpg" alt="Happy Customer"
@@ -657,7 +657,7 @@
                         </div>
 
                         <!-- Customer 7 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer7.jpg" alt="Happy Customer"
@@ -666,7 +666,7 @@
                         </div>
 
                         <!-- Customer 8 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer8.jpg" alt="Happy Customer"
@@ -675,7 +675,7 @@
                         </div>
 
                         <!-- Customer 9 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer9.jpg" alt="Happy Customer"
@@ -684,7 +684,7 @@
                         </div>
 
                         <!-- Customer 10 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer10.jpg" alt="Happy Customer"
@@ -693,7 +693,7 @@
                         </div>
 
                         <!-- Customer 11 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer11.jpg" alt="Happy Customer"
@@ -702,7 +702,7 @@
                         </div>
 
                         <!-- Customer 12 -->
-                        <div class="min-w-[33.33%] h-full p-3">
+                        <div class="w-full md:w-1/3 flex-shrink-0 h-full p-3">
                             <div
                                 class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer border-2 border-transparent hover:border-red-500 transition h-full">
                                 <img src="customer12.jpg" alt="Happy Customer"
@@ -920,22 +920,26 @@
         const prevBtn = document.getElementById('prev-customer');
         const nextBtn = document.getElementById('next-customer');
         let customerIndex = 0;
-
-        // We have 12 items in total
-        // We show 3 at a time.
-        // The max index we can go to is (TotalItems - VisibleItems) = 12 - 3 = 9.
         const totalItems = 12;
-        const visibleItems = 3;
-        const maxIndex = totalItems - visibleItems;
+
+        function getCarouselState() {
+            const isMobile = window.innerWidth < 768; // Tailwind md breakpoint
+            return {
+                visibleItems: isMobile ? 1 : 3,
+                itemWidth: isMobile ? 100 : 33.3333,
+                maxIndex: totalItems - (isMobile ? 1 : 3)
+            };
+        }
 
         function updateCustomerCarousel() {
-            // Each item is 33.33% wide.
-            const translateX = -(customerIndex * 33.33);
+            const state = getCarouselState();
+            const translateX = -(customerIndex * state.itemWidth);
             customerTrack.style.transform = `translateX(${translateX}%)`;
         }
 
         nextBtn.addEventListener('click', () => {
-            if (customerIndex < maxIndex) {
+            const state = getCarouselState();
+            if (customerIndex < state.maxIndex) {
                 customerIndex++;
             } else {
                 customerIndex = 0; // Loop back to start
@@ -944,11 +948,18 @@
         });
 
         prevBtn.addEventListener('click', () => {
+            const state = getCarouselState();
             if (customerIndex > 0) {
                 customerIndex--;
             } else {
-                customerIndex = maxIndex; // Loop to end
+                customerIndex = state.maxIndex; // Loop to end
             }
+            updateCustomerCarousel();
+        });
+
+        // Reset on resize to prevent alignment issues
+        window.addEventListener('resize', () => {
+            customerIndex = 0; // Reset to start
             updateCustomerCarousel();
         });
 
